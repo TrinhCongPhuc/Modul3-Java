@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class DaonguocMang {
+    public static void main(String[] args) {
+        int size;
+        int[] array;
+        Scanner scanner = new Scanner(System.in);
+
+        // Nhập và kiểm tra kích thước mảng (tối đa là 20)
+        do {
+            System.out.print("Nhập kích thước mảng:");
+            size = scanner.nextInt();
+            if (size > 20)
+                System.out.println("Kích thước không vượt quá 20");
+        } while (size > 20);
+
+        // Nhập giá trị cho các phần tử của mảng
+        array = new int[size];
+        int i = 0;
+        while (i < array.length) {
+            System.out.print("Nhập phần tử " + (i + 1) + ": ");
+            array[i] = scanner.nextInt();
+            i++;
+        }
+
+        // In ra mảng đã nhập
+        System.out.printf("%-20s%s", "Các phần tử trong mảng: ", "");
+        for (int j = 0; j < array.length; j++) {
+            System.out.print(array[j] + "\t");
+        }
+
+        // Đảo ngược thứ tự các phần tử trong mảng
+        for (int j = 0; j < array.length / 2; j++) {
+            int temp = array[j];
+            array[j] = array[size - 1 - j];
+            array[size - 1 - j] = temp;
+        }
+
+        // In ra mảng sau khi đã đảo ngược thứ tự các phần tử
+        System.out.printf("\n%-20s%s", "Mảng sau khi đảo ngược: ", "");
+        for (int j = 0; j < array.length; j++) {
+            System.out.print(array[j] + "\t");
+        }
+
+        // Đóng scanner
+        scanner.close();
+    }
+}
